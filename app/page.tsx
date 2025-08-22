@@ -2,6 +2,7 @@ import { Calculator, Heart, DollarSign, Ruler, Clock, Zap } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { AdBanner } from "@/components/ads/ad-banner"
 import Link from "next/link"
 
 const calculatorCategories = [
@@ -64,7 +65,11 @@ const calculatorCategories = [
         description: "Calculate percentages easily",
         href: "/calculators/financial/percentage",
       },
-      { name: "Compound Interest Calculator", description: "Calculate compound interest", href: "#" },
+      {
+        name: "Compound Interest Calculator",
+        description: "Calculate compound interest",
+        href: "/calculators/financial/compound-interest",
+      },
       { name: "Currency Percentage Change Calculator", description: "Currency change percentage", href: "#" },
       { name: "Unit Price Calculator", description: "Compare unit prices", href: "#" },
     ],
@@ -82,8 +87,8 @@ const calculatorCategories = [
         href: "/calculators/converters/temperature",
       },
       { name: "Speed Converter", description: "Convert speed measurements", href: "/calculators/converters/speed" },
-      { name: "Area Converter", description: "Convert area measurements", href: "#" },
-      { name: "Volume Converter", description: "Convert volume measurements", href: "#" },
+      { name: "Area Converter", description: "Convert area measurements", href: "/calculators/converters/area" },
+      { name: "Volume Converter", description: "Convert volume measurements", href: "/calculators/converters/volume" },
       { name: "Pressure Converter", description: "Convert pressure units", href: "#" },
       { name: "Energy Converter", description: "Convert energy units", href: "#" },
     ],
@@ -104,6 +109,18 @@ const calculatorCategories = [
         name: "Time Until X Calculator",
         description: "Time remaining calculator",
         href: "/calculators/time/time-until",
+      },
+    ],
+  },
+  {
+    title: "Currency & Exchange",
+    icon: DollarSign,
+    color: "text-cyan-500",
+    calculators: [
+      {
+        name: "Currency Converter",
+        description: "Convert between currencies",
+        href: "/calculators/converters/currency",
       },
     ],
   },
@@ -131,6 +148,10 @@ export default function HomePage() {
         </div>
       </header>
 
+      <div className="py-4 px-4 bg-muted/30">
+        <AdBanner size="leaderboard" label="Premium Calculator Tools" />
+      </div>
+
       {/* Hero Section */}
       <section className="py-12 px-4">
         <div className="container mx-auto text-center">
@@ -151,6 +172,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="py-4 px-4 md:hidden">
+        <AdBanner size="mobile-banner" label="Mobile Offers" />
+      </div>
 
       {/* Calculator Categories */}
       <section className="py-12 px-4">
@@ -178,8 +203,21 @@ export default function HomePage() {
                   </Link>
                 ))}
               </div>
+
+              {categoryIndex === 1 && (
+                <div className="mt-12 mb-8">
+                  <AdBanner size="leaderboard" label="Financial Planning Tools" />
+                </div>
+              )}
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="py-8 px-4 bg-muted/30">
+        <div className="container mx-auto text-center">
+          <h3 className="text-lg font-semibold mb-4 text-muted-foreground">Sponsored Content</h3>
+          <AdBanner size="leaderboard" label="Partner Services" />
         </div>
       </section>
 
@@ -218,6 +256,11 @@ export default function HomePage() {
                     Age Calculator
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">
+                    Currency Converter
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -242,6 +285,11 @@ export default function HomePage() {
                 <li>
                   <a href="#" className="hover:text-primary transition-colors">
                     Time & Date
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-primary transition-colors">
+                    Currency & Exchange
                   </a>
                 </li>
               </ul>
